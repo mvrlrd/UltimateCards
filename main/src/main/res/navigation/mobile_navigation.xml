@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_category">
+
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="ru.mvrlrd.main.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_category"
+        android:name="ru.mvrlrd.featurecategory.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +23,6 @@
         android:name="ru.mvrlrd.main.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+
 </navigation>

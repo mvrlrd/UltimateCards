@@ -17,3 +17,4 @@ rootProject.name = "UltimateCards"
 include(":app")
 include(":main")
 include(":utils")
+include(":featurecategory")
