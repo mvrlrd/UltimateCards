@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "UltimateCards"
 include(":app")
 include(":main")
+include(":utils")
