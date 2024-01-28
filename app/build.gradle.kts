@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("com.google.devtools.ksp")
 }
 
 android {
@@ -45,4 +46,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    val dagger_version = "2.48"
+    implementation ("com.google.dagger:dagger:$dagger_version")
+    ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
+
 }
