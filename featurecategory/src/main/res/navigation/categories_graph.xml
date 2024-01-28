@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/navigation_category"
-        android:name="ru.mvrlrd.featurecategory.CategoryFragment"
+        android:name="ru.mvrlrd.featurecategory.presentation.CategoryFragment"
         android:label="CategoryFragment"
         tools:layout="@layout/fragment_category"/>
 
