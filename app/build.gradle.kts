@@ -39,6 +39,7 @@ android {
 dependencies {
     implementation(project(":main"))
     implementation(project(":utils"))
+    implementation(project(":featurecategory"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
