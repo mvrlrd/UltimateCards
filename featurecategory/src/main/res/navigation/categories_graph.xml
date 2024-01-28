@@ -1,0 +1,13 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_graph"
+    app:startDestination="@id/navigation_category">
+
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="ru.mvrlrd.featurecategory.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category"/>
+
+</navigation>
