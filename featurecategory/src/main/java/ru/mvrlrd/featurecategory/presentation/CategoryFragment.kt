@@ -2,7 +2,6 @@ package ru.mvrlrd.featurecategory.presentation
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import kotlinx.coroutines.launch
 import ru.mvrlrd.featurecategory.databinding.FragmentCategoryBinding
 import ru.mvrlrd.featurecategory.di.FeatureCategoryComponent
 import ru.mvrlrd.featurecategory.domain.api.FetchAllCategoriesUseCase
+import ru.mvrlrd.featurecategory.presentation.recycler.CategoryAdapter
 import javax.inject.Inject
 
 class CategoryFragment : Fragment() {
@@ -25,6 +25,8 @@ class CategoryFragment : Fragment() {
         FeatureCategoryComponent.getFeatureCategoryComponent()
     }
 
+    @Inject
+    lateinit var categoryAdapter: CategoryAdapter
     @Inject
     lateinit var fetchAllCategoryUseCase: FetchAllCategoriesUseCase
 
@@ -45,12 +47,15 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.recycler.apply {
+            adapter = categoryAdapter
+
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED){
                 fetchAllCategoryUseCase.fetchAllCategories().collect{
-                    it.forEach {cat->
-                        Log.d("TAG", "________:  id: ${cat.id} ____ name: ${cat.name} ")
-                    }
+                    categoryAdapter.submitList(it)
                 }
             }
         }
