@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_height">150dp</dimen>
+    <dimen name="card_corner_radius">15dp</dimen>
+    <dimen name="space_between_cards">10dp</dimen>
+    <dimen name="category_title_margin_start">36dp</dimen>
+    <dimen name="category_title_margin_top">24dp</dimen>
+    <dimen name="category_title_text_size">18sp</dimen>
+    <dimen name="category_icon_size">120dp</dimen>
+    <dimen name="category_card_elevation">12dp</dimen>
+
+
+</resources>
