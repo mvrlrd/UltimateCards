@@ -7,4 +7,6 @@ plugins {
     id ("org.jetbrains.kotlin.jvm") version "1.9.0"
     // STEP 2: Apply the KSP plugin
     id ("com.google.devtools.ksp") version "1.9.0-1.0.12"
+    id("androidx.navigation.safeargs") version "2.5.3" apply false
+
 }

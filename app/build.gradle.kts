@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":utils"))
     implementation(project(":featurecategory"))
     implementation(project(":feature_category_details"))
+    implementation(project(":feature_details_api"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

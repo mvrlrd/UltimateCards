@@ -2,6 +2,8 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id ("com.google.devtools.ksp")
+    id("kotlin-kapt")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -35,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature_category_details"))
+    implementation(project(":feature_details_api"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -54,4 +56,7 @@ dependencies {
     val fragment_version = "1.6.2"
     // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
 }

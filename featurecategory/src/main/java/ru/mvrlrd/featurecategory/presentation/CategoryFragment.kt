@@ -7,13 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
-import ru.mvrlrd.feature_category_details.DetailsFragment
+import ru.mvrlrd.feature_details_mediator.FeatureDetailsMediator
 import ru.mvrlrd.featurecategory.databinding.FragmentCategoryBinding
+import ru.mvrlrd.featurecategory.di.CategoryDepsProvider
 import ru.mvrlrd.featurecategory.di.FeatureCategoryComponent
 import ru.mvrlrd.featurecategory.domain.api.FetchAllCategoriesUseCase
 import ru.mvrlrd.featurecategory.presentation.recycler.CategoryAdapter
@@ -25,14 +25,17 @@ class CategoryFragment : Fragment() {
 
 
     private val featureCategoryComponent: FeatureCategoryComponent by lazy {
-        FeatureCategoryComponent.getFeatureCategoryComponent()
+        FeatureCategoryComponent.getFeatureCategoryComponent(CategoryDepsProvider.deps)
     }
+
+    @Inject
+    lateinit var detailsMediator: FeatureDetailsMediator
 
     @Inject
     lateinit var categoryAdapter: CategoryAdapter
     @Inject
     lateinit var fetchAllCategoryUseCase: FetchAllCategoriesUseCase
-    var cont :ViewGroup? = null
+    var _container :ViewGroup? = null
 
     override fun onAttach(context: Context) {
         featureCategoryComponent.inject(this@CategoryFragment)
@@ -43,7 +46,7 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        cont = container
+        _container = container
         _binding = FragmentCategoryBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -56,13 +59,19 @@ class CategoryFragment : Fragment() {
 
         }
 
-        categoryAdapter.onItemClickCallback = {catId->
+        categoryAdapter.onItemClickCallback = { catId ->
             Log.d("TAG", "onViewCreated: $catId ")
-            requireActivity().supportFragmentManager.commit {
-                replace(cont!!.id,DetailsFragment.newInstance(catId.toString()))
-               addToBackStack(null)
-            }
+            detailsMediator.startFeatureDetails(_container!!.id, requireActivity().supportFragmentManager, catId)
+//            findNavController().navigate(
+//                CategoryFragmentDirections.actionCategoryFragmentToBlankFragment()
+//                CategoryFragmentDirections.actionCategoryFragmentToDetailsFragment(catId)
+
         }
+////            requireActivity().supportFragmentManager.commit {
+////                replace(cont!!.id,DetailsFragment.newInstance(catId.toString()))
+////               addToBackStack(null)
+////            }
+//        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED){

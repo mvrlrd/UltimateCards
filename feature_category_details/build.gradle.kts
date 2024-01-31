@@ -1,6 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs")
+    id("kotlin-kapt")
+    id ("com.google.devtools.ksp")
 }
 
 android {
@@ -34,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature_details_api"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -46,4 +50,11 @@ dependencies {
 
     // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+
+    val dagger_version = "2.48"
+    implementation ("com.google.dagger:dagger:$dagger_version")
+    ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
 }

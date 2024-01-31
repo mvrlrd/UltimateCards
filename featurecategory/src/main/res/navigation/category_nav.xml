@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_nav"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    app:navGraph="@navigation/category_nav"
+    app:defaultNavHost="true"
+    app:startDestination="@id/categoryFragment">
+
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="ru.mvrlrd.featurecategory.presentation.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="ru.mvrlrd.feature_category_details.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="categoryId"
+            app:argType="long"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="ru.mvrlrd.featurecategory.presentation.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" />
+</navigation>

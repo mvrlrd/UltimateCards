@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import ru.mvrlrd.feature_category_details.databinding.FragmentDetailsBinding
 
 private const val CATEGORY_ID = "param1"
@@ -15,6 +16,7 @@ private const val CATEGORY_ID = "param1"
 class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding: FragmentDetailsBinding get()=_binding?:throw RuntimeException("FragmentDetailsBinding = null")
+//    private val args by navArgs<>()
     private var categoryId: String? = null
 
     override fun onAttach(context: Context) {
