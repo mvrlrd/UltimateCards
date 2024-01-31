@@ -8,9 +8,10 @@ import ru.mvrlrd.featurecategory.domain.Category
 import javax.inject.Inject
 
 class CategoryAdapter@Inject constructor(): ListAdapter<Category, CategoryViewHolder>(CategoryItemDiffCallBack()) {
+    var onItemClickCallback: ((Long)->Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return CategoryViewHolder(ItemCategoryBinding.inflate(inflater, parent, false))
+        return CategoryViewHolder(ItemCategoryBinding.inflate(inflater, parent, false), onItemClickCallback)
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
