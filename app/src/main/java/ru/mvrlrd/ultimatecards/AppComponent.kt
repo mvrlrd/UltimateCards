@@ -3,10 +3,10 @@ package ru.mvrlrd.ultimatecards
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
-import ru.mvrlrd.featurecategory.di.MediatorDeps
+import ru.mvrlrd.featurecategory.di.CategoryMediatorDeps
 
 @Component(modules = [MediatorBindings::class])
-interface AppComponent: MediatorDeps {
+interface AppComponent: CategoryMediatorDeps {
 
     fun inject(app: App)
     @Component.Factory
