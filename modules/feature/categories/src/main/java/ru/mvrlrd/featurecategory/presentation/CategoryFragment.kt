@@ -17,6 +17,9 @@ import ru.mvrlrd.featurecategory.di.CategoryDepsProvider
 import ru.mvrlrd.featurecategory.di.FeatureCategoryComponent
 import ru.mvrlrd.featurecategory.domain.api.FetchAllCategoriesUseCase
 import ru.mvrlrd.featurecategory.presentation.recycler.CategoryAdapter
+import ru.mvrlrd.network.data.SkyEngApiService
+import ru.mvrlrd.network.domain.api.SearchTranslationsUseCase
+
 import javax.inject.Inject
 
 class CategoryFragment : Fragment() {
@@ -36,6 +39,8 @@ class CategoryFragment : Fragment() {
     @Inject
     lateinit var fetchAllCategoryUseCase: FetchAllCategoriesUseCase
     var _container :ViewGroup? = null
+    @Inject
+    lateinit var searchTranslationsUseCase: SearchTranslationsUseCase
 
     override fun onAttach(context: Context) {
         featureCategoryComponent.inject(this@CategoryFragment)
@@ -62,22 +67,20 @@ class CategoryFragment : Fragment() {
         categoryAdapter.onItemClickCallback = { catId ->
             Log.d("TAG", "onViewCreated: $catId ")
             detailsMediator.startDetailsFragment(_container!!.id, requireActivity().supportFragmentManager, catId)
-//            findNavController().navigate(
-//                CategoryFragmentDirections.actionCategoryFragmentToBlankFragment()
-//                CategoryFragmentDirections.actionCategoryFragmentToDetailsFragment(catId)
-
         }
-////            requireActivity().supportFragmentManager.commit {
-////                replace(cont!!.id,DetailsFragment.newInstance(catId.toString()))
-////               addToBackStack(null)
-////            }
-//        }
+
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.RESUMED){
-                fetchAllCategoryUseCase.fetchAllCategories().collect{
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                fetchAllCategoryUseCase.fetchAllCategories().collect {
                     categoryAdapter.submitList(it)
                 }
+
+             searchTranslationsUseCase.searchTranslation("root")
+                  .forEach {
+                  Log.d("TAG", "_____onViewCreated: ____${it.text}")
+              }
+
             }
         }
 

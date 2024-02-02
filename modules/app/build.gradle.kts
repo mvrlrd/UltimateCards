@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":modules:feature:categories"))
     implementation(project(":modules:feature:details"))
     implementation(project(":modules:common:details_api"))
+    implementation(project(":modules:network"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

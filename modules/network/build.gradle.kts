@@ -2,17 +2,18 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id ("com.google.devtools.ksp")
-    id("kotlin-kapt")
-    id("androidx.navigation.safeargs")
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
 }
 
 android {
-    namespace = "ru.mvrlrd.featurecategory"
+    namespace = "ru.mvrlrd.network"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 27
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -31,14 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":modules:common:details_api"))
-    implementation(project(":modules:network"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -47,23 +43,13 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
     val dagger_version = "2.48"
     implementation ("com.google.dagger:dagger:$dagger_version")
     ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
-
-    val fragment_version = "1.6.2"
-    // Kotlin
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
-
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
-
-
 
 
 }
