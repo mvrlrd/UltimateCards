@@ -35,8 +35,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":utils"))
-    implementation(project(":f_category"))
+    implementation(project(":modules:common:utils"))
+    implementation(project(":modules:feature:categories"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

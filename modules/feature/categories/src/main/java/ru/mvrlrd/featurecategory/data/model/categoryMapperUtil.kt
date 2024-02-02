@@ -1,6 +1,5 @@
 package ru.mvrlrd.featurecategory.data.model
 
-import ru.mvrlrd.featurecategory.data.model.CategoryEntity
 import ru.mvrlrd.featurecategory.domain.Category
 
 internal fun CategoryEntity.mapToCategory() =
