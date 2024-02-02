@@ -14,7 +14,10 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "UltimateCards"
-include(":app")
-include(":main")
-include(":utils")
-include(":featurecategory")
+include(":modules:app")
+include(":modules:main")
+include(":modules:common:utils")
+include(":modules:feature:categories")
+include(":modules:feature:details")
+include(":modules:common:details_api")
+include(":modules:network")
