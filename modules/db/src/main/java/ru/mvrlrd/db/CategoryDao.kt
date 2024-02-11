@@ -1,0 +1,22 @@
+package ru.mvrlrd.db
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+import ru.mvrlrd.db.entity.CategoryEntity
+
+@Dao
+interface CategoryDao {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCategory(category: CategoryEntity): Flow<Long>
+
+    @Query("DELETE FROM categories_db")
+    suspend fun clearCategories(): Flow<Int>
+
+    @Query("SELECT * FROM categories_db")
+    suspend fun getAllCategories(): Flow<List<CategoryEntity>>
+
+}
