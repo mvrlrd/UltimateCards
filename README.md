@@ -11,6 +11,8 @@ The application allows you to create categories of words, add words and their tr
 - **MVI/MVVM**
 - **Multimodule**
 
+  For translating is using Skyeng dictionary API
+
 
 # Stack
 
