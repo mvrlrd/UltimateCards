@@ -1,7 +1,7 @@
 package ru.mvrlrd.featurecategory.data
 
 import kotlinx.coroutines.flow.Flow
-import ru.mvrlrd.featurecategory.domain.Category
+import ru.mvrlrd.core.Category
 import ru.mvrlrd.featurecategory.domain.CategoryRepository
 import javax.inject.Inject
 

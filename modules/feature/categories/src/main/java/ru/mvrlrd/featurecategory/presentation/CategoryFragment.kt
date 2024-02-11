@@ -17,10 +17,10 @@ import ru.mvrlrd.featurecategory.di.CategoryDepsProvider
 import ru.mvrlrd.featurecategory.di.FeatureCategoryComponent
 import ru.mvrlrd.featurecategory.domain.api.FetchAllCategoriesUseCase
 import ru.mvrlrd.featurecategory.presentation.recycler.CategoryAdapter
-import ru.mvrlrd.network.data.SkyEngApiService
 import ru.mvrlrd.network.domain.api.SearchTranslationsUseCase
 
 import javax.inject.Inject
+import javax.inject.Named
 
 class CategoryFragment : Fragment() {
     private var _binding: FragmentCategoryBinding? = null

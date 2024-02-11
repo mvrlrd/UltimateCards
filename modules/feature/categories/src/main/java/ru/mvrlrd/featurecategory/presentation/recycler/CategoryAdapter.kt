@@ -3,8 +3,8 @@ package ru.mvrlrd.featurecategory.presentation.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import ru.mvrlrd.core.Category
 import ru.mvrlrd.featurecategory.databinding.ItemCategoryBinding
-import ru.mvrlrd.featurecategory.domain.Category
 import javax.inject.Inject
 
 class CategoryAdapter@Inject constructor(): ListAdapter<Category, CategoryViewHolder>(CategoryItemDiffCallBack()) {

@@ -1,7 +1,7 @@
 package ru.mvrlrd.featurecategory.data
 
 import kotlinx.coroutines.flow.Flow
-import ru.mvrlrd.featurecategory.domain.Category
+import ru.mvrlrd.core.Category
 
 interface LocalDataSource {
    suspend fun insertCategory(category: Category): Flow<Long>

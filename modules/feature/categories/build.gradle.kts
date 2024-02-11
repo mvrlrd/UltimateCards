@@ -39,6 +39,8 @@ android {
 dependencies {
     implementation(project(":modules:common:details_api"))
     implementation(project(":modules:network"))
+    implementation(project(":modules:db"))
+    implementation(project(":modules:common:core"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

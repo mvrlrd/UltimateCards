@@ -11,12 +11,12 @@ import ru.mvrlrd.db.entity.CategoryEntity
 interface CategoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCategory(category: CategoryEntity): Flow<Long>
+    suspend fun insertCategory(category: CategoryEntity): Long
 
     @Query("DELETE FROM categories_db")
-    suspend fun clearCategories(): Flow<Int>
+    suspend fun clearCategories(): Int
 
     @Query("SELECT * FROM categories_db")
-    suspend fun getAllCategories(): Flow<List<CategoryEntity>>
+    fun getAllCategories(): Flow<List<CategoryEntity>>
 
 }

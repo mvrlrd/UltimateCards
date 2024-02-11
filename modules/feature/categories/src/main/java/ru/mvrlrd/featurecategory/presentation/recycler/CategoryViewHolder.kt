@@ -1,8 +1,8 @@
 package ru.mvrlrd.featurecategory.presentation.recycler
 
 import androidx.recyclerview.widget.RecyclerView
+import ru.mvrlrd.core.Category
 import ru.mvrlrd.featurecategory.databinding.ItemCategoryBinding
-import ru.mvrlrd.featurecategory.domain.Category
 
 class CategoryViewHolder(
     private val binding: ItemCategoryBinding,
@@ -16,6 +16,6 @@ class CategoryViewHolder(
     }
     fun bind(category: Category) {
         itemId = category.id
-        binding.tvCategoryName.text = category.name
+        binding.tvCategoryName.text = category.title
     }
 }

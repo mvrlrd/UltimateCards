@@ -1,6 +1,7 @@
 package ru.mvrlrd.featurecategory.domain
 
 import kotlinx.coroutines.flow.Flow
+import ru.mvrlrd.core.Category
 
 interface CategoryRepository {
    suspend fun fetchCategory(id: Long): Flow<Category>

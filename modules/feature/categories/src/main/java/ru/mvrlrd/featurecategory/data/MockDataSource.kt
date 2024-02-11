@@ -2,7 +2,7 @@ package ru.mvrlrd.featurecategory.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import ru.mvrlrd.featurecategory.domain.Category
+import ru.mvrlrd.core.Category
 import javax.inject.Inject
 
 class MockDataSource @Inject constructor() : LocalDataSource{

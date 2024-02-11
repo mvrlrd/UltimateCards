@@ -4,9 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "categories_db")
+@Entity(tableName = CategoryEntity.TABLE_NAME)
 data class CategoryEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo val title: String,
-    @ColumnInfo val icon: Int
-)
+){
+    companion object{
+        const val TABLE_NAME = "categories_db"
+    }
+}
