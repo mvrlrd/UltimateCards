@@ -9,7 +9,6 @@ import dagger.Provides
 import ru.mvrlrd.db.CategoryDao
 import ru.mvrlrd.db.UltimateCardsDataBase
 import ru.mvrlrd.db.entity.CategoryEntity
-import javax.inject.Named
 
 @Module
 class DataBaseModule {
