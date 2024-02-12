@@ -1,7 +1,7 @@
 package ru.mvrlrd.featurecategory.presentation.recycler
 
 import androidx.recyclerview.widget.DiffUtil
-import ru.mvrlrd.core.Category
+import ru.mvrlrd.core_api.dto.Category
 import javax.inject.Inject
 
 class CategoryItemDiffCallBack @Inject constructor(): DiffUtil.ItemCallback<Category>() {

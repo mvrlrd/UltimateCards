@@ -1,7 +1,8 @@
 package ru.mvrlrd.featurecategory.data.model
 
-import ru.mvrlrd.core.Category
-import ru.mvrlrd.db.entity.CategoryEntity
+
+import ru.mvrlrd.core_api.database.entity.CategoryEntity
+import ru.mvrlrd.core_api.dto.Category
 import javax.inject.Inject
 
 class CategoryMapper@Inject constructor() {

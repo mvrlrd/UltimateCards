@@ -3,7 +3,7 @@ package ru.mvrlrd.featurecategory.presentation.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import ru.mvrlrd.core.Category
+import ru.mvrlrd.core_api.dto.Category
 import ru.mvrlrd.featurecategory.databinding.ItemCategoryBinding
 import javax.inject.Inject
 

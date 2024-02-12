@@ -1,7 +1,7 @@
 package ru.mvrlrd.featurecategory.presentation.recycler
 
 import androidx.recyclerview.widget.RecyclerView
-import ru.mvrlrd.core.Category
+import ru.mvrlrd.core_api.dto.Category
 import ru.mvrlrd.featurecategory.databinding.ItemCategoryBinding
 
 class CategoryViewHolder(
