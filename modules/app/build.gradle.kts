@@ -40,6 +40,7 @@ dependencies {
     implementation(project(":modules:main"))
     implementation(project(":modules:common:utils"))
     implementation(project(":modules:feature:categories"))
+    implementation(project(":modules:feature:add_category"))
     implementation(project(":modules:feature:details"))
     implementation(project(":modules:common:details_api"))
     implementation(project(":modules:network"))

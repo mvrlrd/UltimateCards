@@ -2,11 +2,15 @@ package ru.mvrlrd.ultimatecards
 
 import dagger.Binds
 import dagger.Module
-import ru.mvrlrd.feature_category_details.DetailsMediatorImpl
-import ru.mvrlrd.feature_details_mediator.DetailsMediator
+import ru.mvrlrd.add_category.AddCategoryMediatorImpl
+import ru.mvrlrd.core_api.mediator.AddCategoryMediator
 
 @Module
 interface MediatorBindings {
+//    @Binds
+//    fun bindsDetailsMediator(detailsMediatorImpl: DetailsMediatorImpl): DetailsMediator
+
     @Binds
-    fun bindsDetailsMediator(detailsMediatorImpl: DetailsMediatorImpl): DetailsMediator
+    fun bindsAddCategoryMediator(addCategoryMediatorImpl: AddCategoryMediatorImpl): AddCategoryMediator
+
 }

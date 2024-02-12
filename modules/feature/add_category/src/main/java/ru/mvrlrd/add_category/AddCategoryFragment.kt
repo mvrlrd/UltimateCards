@@ -7,19 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import ru.mvrlrd.add_category.databinding.FragmentAddCategoryBinding
 
-private const val CATEGORY_ID = "categoryId"
 
 class AddCategoryFragment : Fragment() {
-    private var categoryId: Long? = null
+
     private var _binding: FragmentAddCategoryBinding? = null
     private val binding: FragmentAddCategoryBinding get() = _binding?:throw RuntimeException("FragmentAddCategoryBinding is null")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            categoryId = it.getLong(CATEGORY_ID)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +29,9 @@ class AddCategoryFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(categoryId: Long) =
+        fun newInstance() =
             AddCategoryFragment().apply {
-                arguments = Bundle().apply {
-                    putLong(CATEGORY_ID, categoryId)
-                }
+
             }
     }
 }

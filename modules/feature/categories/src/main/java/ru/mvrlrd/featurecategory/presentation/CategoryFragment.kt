@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
+import ru.mvrlrd.core_api.mediator.AddCategoryMediator
 import ru.mvrlrd.core_api.mediator.AppWithFacade
 import ru.mvrlrd.featurecategory.databinding.FragmentCategoryBinding
 import ru.mvrlrd.featurecategory.di.FeatureCategoryComponent
@@ -36,7 +37,9 @@ class CategoryFragment : Fragment() {
     lateinit var categoryAdapter: CategoryAdapter
     @Inject
     lateinit var fetchAllCategoryUseCase: FetchAllCategoriesUseCase
-//    var _container :ViewGroup? = null
+    @Inject
+    lateinit var addCategoryMediator: AddCategoryMediator
+    var _container :ViewGroup? = null
 //    @Inject
 //    lateinit var searchTranslationsUseCase: SearchTranslationsUseCase
 
@@ -49,7 +52,7 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        _container = container
+        _container = container
         _binding = FragmentCategoryBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -58,7 +61,7 @@ class CategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fabAddCategory.setOnClickListener {
-
+            addCategoryMediator.startAddCategoryFragment(_container!!.id,requireActivity().supportFragmentManager)
         }
 
         binding.recycler.apply {
