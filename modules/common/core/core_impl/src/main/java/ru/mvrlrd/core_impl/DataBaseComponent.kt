@@ -11,7 +11,4 @@ import javax.inject.Singleton
     dependencies = [AppProvider::class],
     modules = [DataBaseModule::class]
 )
-interface DataBaseComponent : DatabaseProvider{
-
-    fun getDao():CategoryDao
-}
+interface DataBaseComponent : DatabaseProvider
