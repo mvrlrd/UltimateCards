@@ -1,22 +1,30 @@
 package ru.mvrlrd.ultimatecards
 
+
+import android.app.Application
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
-import ru.mvrlrd.featurecategory.di.CategoryMediatorDeps
+import ru.mvrlrd.core_api.mediator.AppProvider
+import javax.inject.Singleton
 
-@Component(modules = [MediatorBindings::class])
-interface AppComponent: CategoryMediatorDeps {
+@Singleton
+@Component
+interface AppComponent: AppProvider {
 
-    fun inject(app: App)
+
     @Component.Factory
     interface Factory{
-        fun create(@BindsInstance context: Context): AppComponent
+        fun create(@BindsInstance context: Context): AppProvider
+
     }
 
-    companion object{
-        fun getAppComponent(context: Context): AppComponent{
-            return DaggerAppComponent.factory().create(context)
+    companion object {
+        private var appComponent: AppProvider? = null
+        fun getAppComponent(application: Application): AppProvider {
+            return appComponent ?: DaggerAppComponent
+                .factory().create(application)
         }
     }
+
 }

@@ -11,15 +11,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
-import ru.mvrlrd.feature_details_mediator.DetailsMediator
+import ru.mvrlrd.core_api.mediator.AppWithFacade
 import ru.mvrlrd.featurecategory.databinding.FragmentCategoryBinding
-import ru.mvrlrd.featurecategory.di.CategoryDepsProvider
 import ru.mvrlrd.featurecategory.di.FeatureCategoryComponent
 import ru.mvrlrd.featurecategory.domain.api.FetchAllCategoriesUseCase
 import ru.mvrlrd.featurecategory.presentation.recycler.CategoryAdapter
-import ru.mvrlrd.network.data.SkyEngApiService
-import ru.mvrlrd.network.domain.api.SearchTranslationsUseCase
-
 import javax.inject.Inject
 
 class CategoryFragment : Fragment() {
@@ -28,19 +24,21 @@ class CategoryFragment : Fragment() {
 
 
     private val featureCategoryComponent: FeatureCategoryComponent by lazy {
-        FeatureCategoryComponent.getFeatureCategoryComponent(CategoryDepsProvider.deps)
+        FeatureCategoryComponent.getFeatureCategoryComponent(
+            (requireActivity().application as AppWithFacade).getFacade()
+        )
     }
 
-    @Inject
-    lateinit var detailsMediator: DetailsMediator
+//    @Inject
+//    lateinit var detailsMediator: DetailsMediator
 
     @Inject
     lateinit var categoryAdapter: CategoryAdapter
     @Inject
     lateinit var fetchAllCategoryUseCase: FetchAllCategoriesUseCase
-    var _container :ViewGroup? = null
-    @Inject
-    lateinit var searchTranslationsUseCase: SearchTranslationsUseCase
+//    var _container :ViewGroup? = null
+//    @Inject
+//    lateinit var searchTranslationsUseCase: SearchTranslationsUseCase
 
     override fun onAttach(context: Context) {
         featureCategoryComponent.inject(this@CategoryFragment)
@@ -51,7 +49,7 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _container = container
+//        _container = container
         _binding = FragmentCategoryBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -64,22 +62,24 @@ class CategoryFragment : Fragment() {
 
         }
 
-        categoryAdapter.onItemClickCallback = { catId ->
-            Log.d("TAG", "onViewCreated: $catId ")
-            detailsMediator.startDetailsFragment(_container!!.id, requireActivity().supportFragmentManager, catId)
-        }
+//        categoryAdapter.onItemClickCallback = { catId ->
+//            Log.d("TAG", "onViewCreated: $catId ")
+//            detailsMediator.startDetailsFragment(_container!!.id, requireActivity().supportFragmentManager, catId)
+//        }
 
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                Log.d("TAG", "_____onViewCreated: ____helllloooo")
                 fetchAllCategoryUseCase.fetchAllCategories().collect {
+                    Log.d("TAG", "_____onViewCreated: ${it.size}")
                     categoryAdapter.submitList(it)
                 }
 
-             searchTranslationsUseCase.searchTranslation("root")
-                  .forEach {
-                  Log.d("TAG", "_____onViewCreated: ____${it.text}")
-              }
+//             searchTranslationsUseCase.searchTranslation("root")
+//                  .forEach {
+//                  Log.d("TAG", "_____onViewCreated: ____${it.text}")
+//              }
 
             }
         }
