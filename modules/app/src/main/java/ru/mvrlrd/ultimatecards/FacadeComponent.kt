@@ -8,7 +8,8 @@ import ru.mvrlrd.core_api.mediator.ProvidersFacade
 import ru.mvrlrd.core_factory.CoreProvidersFactory
 
 @Component(
-    dependencies = [AppProvider::class, DatabaseProvider::class]
+    dependencies = [AppProvider::class, DatabaseProvider::class],
+    modules = [MediatorBindings::class]
 )
 interface FacadeComponent: ProvidersFacade {
 

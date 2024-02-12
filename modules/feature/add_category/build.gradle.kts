@@ -1,21 +1,18 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id ("com.google.devtools.ksp")
 }
 
 android {
-    namespace = "ru.mvrlrd.ultimatecards"
+    namespace = "ru.mvrlrd.add_category"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.mvrlrd.ultimatecards"
         minSdk = 27
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -34,19 +31,13 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation(project(":modules:main"))
-    implementation(project(":modules:common:utils"))
-    implementation(project(":modules:feature:categories"))
-    implementation(project(":modules:feature:add_category"))
-    implementation(project(":modules:feature:details"))
-    implementation(project(":modules:common:details_api"))
-    implementation(project(":modules:network"))
-
-    implementation(project(":modules:common:core:core_factory"))
-
+    implementation(project(":modules:common:core:core_api"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -55,8 +46,11 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    val fragment_version = "1.6.2"
+    // Kotlin
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
     val dagger_version = "2.48"
     implementation ("com.google.dagger:dagger:$dagger_version")
-    ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
-
+    ksp ("com.google.dagger:dagger-compiler:$dagger_version")
 }
