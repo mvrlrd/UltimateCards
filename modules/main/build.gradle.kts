@@ -9,8 +9,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":modules:common:utils"))
-    implementation(project(":modules:feature:categories"))
+    implementation(projects.modules.common.utils)
+    implementation(projects.modules.feature.categories)
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

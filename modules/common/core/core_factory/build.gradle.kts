@@ -9,8 +9,8 @@ android {
 }
 
 dependencies {
-    api(project(":modules:common:core:core_api"))
-    implementation(project(":modules:common:core:core_impl"))
+    implementation(projects.modules.common.core.coreApi)
+    implementation(projects.modules.common.core.coreImpl)
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

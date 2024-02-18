@@ -34,15 +34,15 @@ android {
 }
 
 dependencies {
-    implementation(project(":modules:main"))
-    implementation(project(":modules:common:utils"))
-    implementation(project(":modules:feature:categories"))
-    implementation(project(":modules:feature:add_category"))
-    implementation(project(":modules:feature:details"))
-    implementation(project(":modules:common:details_api"))
-    implementation(project(":modules:network"))
-
-    implementation(project(":modules:common:core:core_factory"))
+    implementation(projects.modules.main)
+    implementation(projects.modules.common.utils)
+    implementation(projects.modules.common.detailsApi)
+    implementation(projects.modules.feature.categories)
+    implementation(projects.modules.feature.details)
+    implementation(projects.modules.feature.addCategory)
+    implementation(projects.modules.network)
+    implementation(projects.modules.common.core.coreFactory)
+    implementation(projects.modules.common.core.coreApi)
 
 
     implementation("androidx.core:core-ktx:1.12.0")
