@@ -24,7 +24,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    val dagger_version = "2.48"
-    implementation ("com.google.dagger:dagger:$dagger_version")
-    ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
+    ksp(libs.dagger.ksp.compiler)
+    implementation(libs.dagger)
 }

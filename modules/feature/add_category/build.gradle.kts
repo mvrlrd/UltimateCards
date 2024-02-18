@@ -22,7 +22,6 @@ dependencies {
     // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
-    val dagger_version = "2.48"
-    implementation ("com.google.dagger:dagger:$dagger_version")
-    ksp ("com.google.dagger:dagger-compiler:$dagger_version")
+    ksp(libs.dagger.ksp.compiler)
+    implementation(libs.dagger)
 }

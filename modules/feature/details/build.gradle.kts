@@ -27,7 +27,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
 
-    val dagger_version = "2.48"
-    implementation ("com.google.dagger:dagger:$dagger_version")
-    ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
+    ksp(libs.dagger.ksp.compiler)
+    implementation(libs.dagger)
 }
