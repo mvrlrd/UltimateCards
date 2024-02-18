@@ -12,25 +12,18 @@ dependencies {
     implementation(projects.modules.common.core.coreApi)
     implementation(projects.modules.common.core.coreImpl)
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    val room_version = "2.6.1"
-
-
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    // To use Kotlin Symbol Processing (KSP)
-    ksp("androidx.room:room-compiler:$room_version")
-    // optional - Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:$room_version")
-
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+//room
+    implementation(libs.room.runtime)
+    ksp(libs.room.ksp.compiler)
+    annotationProcessor(libs.room.compiler)
+    implementation(libs.room.ktx)
+//dagger
     ksp(libs.dagger.ksp.compiler)
     implementation(libs.dagger)
-
-
 }

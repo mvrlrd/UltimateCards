@@ -17,6 +17,8 @@ dagger_version = "2.48"
 
 ksp_version = "1.9.0-1.0.12"
 
+room_version="2.6.1"
+
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -31,6 +33,13 @@ navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx",
 dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger_version" }
 dagger-ksp-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger_version" }
 
+#room
+room-runtime={group="androidx.room", name="room-runtime",version.ref="room_version"}
+room-compiler={group="androidx.room", name="room-compiler",version.ref="room_version"}
+room-ksp-compiler={group="androidx.room", name="room-compiler",version.ref="room_version"}
+room-ktx={group="androidx.room", name="room-ktx",version.ref="room_version"} #optional - Kotlin Extensions and Coroutines support for Room
+
+
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
@@ -38,6 +47,9 @@ com-android-library = { id = "com.android.library", version.ref = "agp" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp_version" }
 androidx-navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigation-safeargs" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization" }
+
+
+
 
 
 
