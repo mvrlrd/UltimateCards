@@ -19,6 +19,17 @@ ksp_version = "1.9.0-1.0.12"
 
 room_version="2.6.1"
 
+navigation_component = "2.7.7"
+
+fragment_version = "1.6.2"
+jakewarton_kotlinx_serialization_converter = "1.0.0"
+
+constraint_layout="2.1.4"
+lifecycle = "2.7.0"
+
+okhttp_ver="4.12.0"
+kotlinx_serialization_json_ver="1.5.1"
+
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -38,6 +49,22 @@ room-runtime={group="androidx.room", name="room-runtime",version.ref="room_versi
 room-compiler={group="androidx.room", name="room-compiler",version.ref="room_version"}
 room-ksp-compiler={group="androidx.room", name="room-compiler",version.ref="room_version"}
 room-ktx={group="androidx.room", name="room-ktx",version.ref="room_version"} #optional - Kotlin Extensions and Coroutines support for Room
+
+#jetpack navigation
+androidx-navigation-fragment-ktx={group="androidx.navigation",name="navigation-fragment-ktx",version.ref="navigation_component"}
+androidx-navigation-ui-ktx={group="androidx.navigation",name="navigation-ui-ktx",version.ref="navigation_component"}
+
+androidx-fragment-ktx={group="androidx.fragment",name="fragment-ktx",version.ref="fragment_version"}
+
+jakewharton-kotlinx-serialization-converter ={group="com.jakewharton.retrofit",name="retrofit2-kotlinx-serialization-converter",version.ref="jakewarton_kotlinx_serialization_converter"}
+#okhttp
+okhttp={group="com.squareup.okhttp3",name="okhttp",version.ref="okhttp_ver"}
+kotlinx-serialization-json={group="org.jetbrains.kotlinx",name="kotlinx-serialization-json",version.ref="kotlinx_serialization_json_ver"}
+
+
+androidx-constraintlayout={group="androidx.constraintlayout",name="constraintlayout",version.ref="constraint_layout"}
+androidx-lifecycle-livedata-ktx={group="androidx.lifecycle",name="lifecycle-livedata-ktx",version.ref="lifecycle"}
+androidx-lifecycle-viewmodel-ktx={group="androidx.lifecycle",name="lifecycle-viewmodel-ktx",version.ref="lifecycle"}
 
 
 [plugins]

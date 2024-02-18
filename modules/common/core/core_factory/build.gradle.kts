@@ -18,12 +18,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-//room
+
     implementation(libs.room.runtime)
     ksp(libs.room.ksp.compiler)
     annotationProcessor(libs.room.compiler)
     implementation(libs.room.ktx)
-//dagger
+    
     ksp(libs.dagger.ksp.compiler)
     implementation(libs.dagger)
 }

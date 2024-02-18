@@ -3,7 +3,7 @@ plugins {
     id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId)
     alias(libs.plugins.ksp)
     alias(libs.plugins.androidx.navigation.safeargs)
-    id("kotlin-kapt")
+    `kotlin-kapt`
 }
 apply<ModuleConfigPlugin>()
 android {
@@ -20,13 +20,10 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    val fragment_version = "1.6.2"
+    implementation(libs.androidx.fragment.ktx)
 
-    // Kotlin
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     ksp(libs.dagger.ksp.compiler)
     implementation(libs.dagger)

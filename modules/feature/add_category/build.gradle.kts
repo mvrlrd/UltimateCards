@@ -18,9 +18,7 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    val fragment_version = "1.6.2"
-    // Kotlin
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+    implementation(libs.androidx.fragment.ktx)
 
     ksp(libs.dagger.ksp.compiler)
     implementation(libs.dagger)
