@@ -17,7 +17,13 @@ android {
 
         testInstrumentationRunner = ProjectConfig.testInstrumentationRunner
 
-        ksp { arg("room.schemaLocation", "$projectDir/schemas") }
+
+    }
+    kotlin{
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+        jvmToolchain(17)
     }
 
     buildTypes {

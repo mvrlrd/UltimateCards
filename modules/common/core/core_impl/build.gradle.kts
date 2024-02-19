@@ -6,6 +6,9 @@ plugins {
 apply<ModuleConfigPlugin>()
 android {
     namespace = "ru.mvrlrd.core_impl"
+    defaultConfig{
+        ksp { arg("room.schemaLocation", "$projectDir/schemas") }
+    }
 }
 
 dependencies {

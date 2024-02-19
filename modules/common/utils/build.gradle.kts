@@ -7,6 +7,7 @@ android {
     namespace = "ru.mvrlrd.utils"
 }
 
+
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
