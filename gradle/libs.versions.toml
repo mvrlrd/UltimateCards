@@ -1,0 +1,85 @@
+[versions]
+agp = "8.1.1"
+org-jetbrains-kotlin-android = "1.9.22"
+core-ktx = "1.12.0"
+junit = "4.13.2"
+androidx-test-ext-junit = "1.1.5"
+espresso-core = "3.5.1"
+appcompat = "1.6.1"
+material = "1.11.0"
+constraintlayout = "2.1.4"
+navigation-fragment-ktx = "2.7.7"
+navigation-ui-ktx = "2.7.7"
+navigation-safeargs = "2.5.3"
+kotlin-serialization = "1.8.10"
+
+dagger_version = "2.48"
+
+ksp_version = "1.9.0-1.0.12"
+
+room_version="2.6.1"
+
+navigation_component = "2.7.7"
+
+fragment_version = "1.6.2"
+jakewarton_kotlinx_serialization_converter = "1.0.0"
+
+constraint_layout="2.1.4"
+lifecycle = "2.7.0"
+
+okhttp_ver="4.12.0"
+kotlinx_serialization_json_ver="1.5.1"
+
+[libraries]
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
+navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
+
+dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger_version" }
+dagger-ksp-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger_version" }
+
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "org-jetbrains-kotlin-android" }
+
+#room
+room-runtime = { group="androidx.room", name="room-runtime",version.ref="room_version"}
+room-compiler={group="androidx.room", name="room-compiler",version.ref="room_version"}
+room-ksp-compiler={group="androidx.room", name="room-compiler",version.ref="room_version"}
+room-ktx={group="androidx.room", name="room-ktx",version.ref="room_version"} #optional - Kotlin Extensions and Coroutines support for Room
+
+#jetpack navigation
+androidx-navigation-fragment-ktx={group="androidx.navigation",name="navigation-fragment-ktx",version.ref="navigation_component"}
+androidx-navigation-ui-ktx={group="androidx.navigation",name="navigation-ui-ktx",version.ref="navigation_component"}
+
+androidx-fragment-ktx={group="androidx.fragment",name="fragment-ktx",version.ref="fragment_version"}
+
+jakewharton-kotlinx-serialization-converter ={group="com.jakewharton.retrofit",name="retrofit2-kotlinx-serialization-converter",version.ref="jakewarton_kotlinx_serialization_converter"}
+#okhttp
+okhttp={group="com.squareup.okhttp3",name="okhttp",version.ref="okhttp_ver"}
+kotlinx-serialization-json={group="org.jetbrains.kotlinx",name="kotlinx-serialization-json",version.ref="kotlinx_serialization_json_ver"}
+
+
+androidx-constraintlayout={group="androidx.constraintlayout",name="constraintlayout",version.ref="constraint_layout"}
+androidx-lifecycle-livedata-ktx={group="androidx.lifecycle",name="lifecycle-livedata-ktx",version.ref="lifecycle"}
+androidx-lifecycle-viewmodel-ktx={group="androidx.lifecycle",name="lifecycle-viewmodel-ktx",version.ref="lifecycle"}
+
+
+[plugins]
+com-android-application = { id = "com.android.application", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+com-android-library = { id = "com.android.library", version.ref = "agp" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp_version" }
+androidx-navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigation-safeargs" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization" }
+
+
+
+
+
+
+[bundles]

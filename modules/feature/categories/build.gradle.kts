@@ -1,66 +1,33 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id ("com.google.devtools.ksp")
-    id("kotlin-kapt")
-    id("androidx.navigation.safeargs")
+    id(libs.plugins.com.android.library.get().pluginId)
+    id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId)
+    alias(libs.plugins.ksp)
+    `kotlin-kapt`
+    alias(libs.plugins.androidx.navigation.safeargs)
 }
-
+apply<ModuleConfigPlugin>()
 android {
     namespace = "ru.mvrlrd.featurecategory"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 27
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":modules:common:details_api"))
-    implementation(project(":modules:network"))
-    implementation(project(":modules:common:core:core_api"))
+    implementation(projects.modules.common.core.coreApi)
+    implementation(projects.modules.network)
+    implementation(projects.modules.common.detailsApi)
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
-    val dagger_version = "2.48"
-    implementation ("com.google.dagger:dagger:$dagger_version")
-    ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
+    ksp(libs.dagger.ksp.compiler)
+    implementation(libs.dagger)
 
-    val fragment_version = "1.6.2"
-    // Kotlin
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
-
-
-
-
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.jakewharton.kotlinx.serialization.converter)
 }

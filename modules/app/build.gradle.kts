@@ -1,29 +1,37 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id ("com.google.devtools.ksp")
+    `kotlin-android`
+    id(libs.plugins.com.android.application.get().pluginId)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "ru.mvrlrd.ultimatecards"
-    compileSdk = 34
+    compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
-        applicationId = "ru.mvrlrd.ultimatecards"
-        minSdk = 27
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = ProjectConfig.appId
+        minSdk = ProjectConfig.minSdk
+        targetSdk = ProjectConfig.targetSdk
+        versionCode = ProjectConfig.versionCode
+        versionName = ProjectConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = ProjectConfig.testInstrumentationRunner
+
+
+    }
+    kotlin{
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+        jvmToolchain(17)
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile(ProjectConfig.defaultProguardFile),
+                ProjectConfig.proguardRulesPro
             )
         }
     }
@@ -31,32 +39,26 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
 }
 
 dependencies {
-    implementation(project(":modules:main"))
-    implementation(project(":modules:common:utils"))
-    implementation(project(":modules:feature:categories"))
-    implementation(project(":modules:feature:add_category"))
-    implementation(project(":modules:feature:details"))
-    implementation(project(":modules:common:details_api"))
-    implementation(project(":modules:network"))
+    implementation(projects.modules.main)
+    implementation(projects.modules.common.utils)
+    implementation(projects.modules.common.detailsApi)
+    implementation(projects.modules.feature.categories)
+    implementation(projects.modules.feature.details)
+    implementation(projects.modules.feature.addCategory)
+    implementation(projects.modules.network)
+    implementation(projects.modules.common.core.coreFactory)
+    implementation(projects.modules.common.core.coreApi)
 
-    implementation(project(":modules:common:core:core_factory"))
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 
-
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    val dagger_version = "2.48"
-    implementation ("com.google.dagger:dagger:$dagger_version")
-    ksp ("com.google.dagger:dagger-compiler:$dagger_version") // Dagger compiler
-
+    ksp(libs.dagger.ksp.compiler)
+    implementation(libs.dagger)
 }

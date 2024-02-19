@@ -1,17 +1,15 @@
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("com.android.application") version "8.1.1" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
-    id("com.android.library") version "8.1.1" apply false
-    // STEP 1: Apply the Kotlin JVM (or Kotlin Android plugin)
-    id ("org.jetbrains.kotlin.jvm") version "1.9.0"
-    // STEP 2: Apply the KSP plugin
-    id ("com.google.devtools.ksp") version "1.9.0-1.0.12"
-    id("androidx.navigation.safeargs") version "2.5.3" apply false
-
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
-
-
-
+    id(libs.plugins.com.android.application.get().pluginId) apply false
+    id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId) apply false
+    id(libs.plugins.com.android.library.get().pluginId) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.androidx.navigation.safeargs) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
 }
+true
+
 
