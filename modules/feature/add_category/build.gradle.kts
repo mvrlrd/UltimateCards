@@ -19,6 +19,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.de.hdodenhof.circleimageview)
+    implementation(libs.coil)
 
     ksp(libs.dagger.ksp.compiler)
     implementation(libs.dagger)
