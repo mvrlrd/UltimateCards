@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.coroutines.launch
@@ -18,10 +19,12 @@ import ru.mvrlrd.core_api.mediator.AppWithFacade
 import javax.inject.Inject
 
 class AddCategoryFragment : Fragment() {
+
     private val iconAdapter = IconAdapter { position ->
         onListItemClick(position)
     }
-    private var createdCategory: Category? = null
+
+    private var chosenIcon: Int? = null
 
     @Inject
     lateinit var addCategoryUseCase: AddCategoryUseCase
@@ -45,7 +48,7 @@ class AddCategoryFragment : Fragment() {
     private fun onListItemClick(position: Int) {
         val newList = getIcons() as MutableList
         newList[position] = newList[position].copy(isSelected = true)
-        createdCategory = Category(0, binding.tvTitle.text.toString(), newList[position].res )
+        chosenIcon = newList[position].res
         iconAdapter.items = newList
     }
 
@@ -67,12 +70,21 @@ class AddCategoryFragment : Fragment() {
 
         binding.btnAddCategory.setOnClickListener {
             viewLifecycleOwner.lifecycleScope.launch {
-                createdCategory?.let {
-                    Log.e("TAG",addCategoryUseCase.addCategory(it).toString())
-                }
+               if (binding.tvTitle.text.isNullOrBlank()){
+                   Toast.makeText(requireContext(),"Title mustn't be empty", Toast.LENGTH_SHORT).show()
+               }else{
+                   if (chosenIcon == null){
+                       Toast.makeText(requireContext(),"Choose icon", Toast.LENGTH_SHORT).show()
+                   }else{
+                       val title = binding.tvTitle.text.toString()
+                       val category = Category(0, title, chosenIcon!!)
+                       val insertedId = addCategoryUseCase.addCategory(category)
+                           Log.e("TAG","id #$insertedId has been inserted")
+                       requireActivity().supportFragmentManager.popBackStack()
+                   }
+               }
             }
         }
-
     }
 
     override fun onDestroyView() {
