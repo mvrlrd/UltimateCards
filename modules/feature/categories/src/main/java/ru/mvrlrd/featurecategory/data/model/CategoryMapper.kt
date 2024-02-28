@@ -10,7 +10,8 @@ class CategoryMapper@Inject constructor() {
         with(category){
             CategoryEntity(
                 id,
-                title
+                title,
+                icon
             )
         }
 
@@ -18,7 +19,8 @@ class CategoryMapper@Inject constructor() {
         with(entity){
             Category(
                 id,
-                title
+                title,
+                icon
             )
         }
 

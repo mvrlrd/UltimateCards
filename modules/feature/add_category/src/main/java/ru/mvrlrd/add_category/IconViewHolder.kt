@@ -16,7 +16,6 @@ class IconViewHolder(private val binding: ItemIconBinding,
     override fun onClick(v: View?) {
         val position = adapterPosition
         onItemClicked(position)
-        Log.i("TAG","clicked = $position")
     }
 
     fun bind(item: IconItem){

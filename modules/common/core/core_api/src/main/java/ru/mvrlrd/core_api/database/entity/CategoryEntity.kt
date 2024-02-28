@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 data class CategoryEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
-    val title: String
+    val title: String,
+    val icon: Int
 ){
     companion object{
         const val TABLE_NAME = "categories_db"
