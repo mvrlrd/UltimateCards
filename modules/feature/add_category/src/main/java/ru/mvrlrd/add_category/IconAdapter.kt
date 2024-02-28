@@ -4,20 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.mvrlrd.add_category.databinding.ItemIconBinding
+import kotlin.properties.Delegates
 
-class IconAdapter : RecyclerView.Adapter<IconViewHolder>() {
-    private val items = listOf(
-        R.drawable.abstract_shape_04,
-        R.drawable.abstract_shape_05,
-        R.drawable.abstract_shape_10,
-        R.drawable.abstract_shape_11,
-        R.drawable.abstract_shape_13
-    )
+class IconAdapter(
+    private val onClickCallback: ((Int) -> Unit)
+) : RecyclerView.Adapter<IconViewHolder>() {
+    var items: List<IconItem> by Delegates.observable(emptyList()) {
+            prop, old, new ->
+      notifyDataSetChanged()
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return IconViewHolder(
-            ItemIconBinding.inflate(inflater, parent, false)
+            ItemIconBinding.inflate(inflater, parent, false), onClickCallback
         )
     }
 
