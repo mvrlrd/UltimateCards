@@ -1,24 +1,51 @@
 package ru.mvrlrd.add_category
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import kotlinx.coroutines.launch
 import ru.mvrlrd.add_category.databinding.FragmentAddCategoryBinding
+import ru.mvrlrd.add_category.di.AddCategoryComponent
+import ru.mvrlrd.add_category.domain.api.AddCategoryUseCase
+import ru.mvrlrd.core_api.dto.Category
+import ru.mvrlrd.core_api.mediator.AppWithFacade
+import javax.inject.Inject
 
 class AddCategoryFragment : Fragment() {
-    private val iconAdapter = IconAdapter{pos->
-        onListItemClick(pos)
+    private val iconAdapter = IconAdapter { position ->
+        onListItemClick(position)
     }
+    private var createdCategory: Category? = null
+
+    @Inject
+    lateinit var addCategoryUseCase: AddCategoryUseCase
+
+
+    private val addCategoryComponent: AddCategoryComponent by lazy {
+        AddCategoryComponent.getFeatureCategoryComponent(
+            (requireActivity().application as AppWithFacade).getFacade()
+        )
+    }
+
 
     private var _binding: FragmentAddCategoryBinding? = null
     private val binding: FragmentAddCategoryBinding get() = _binding?:throw RuntimeException("FragmentAddCategoryBinding is null")
 
+    override fun onAttach(context: Context) {
+        addCategoryComponent.inject(this)
+        super.onAttach(context)
+    }
+
     private fun onListItemClick(position: Int) {
         val newList = getIcons() as MutableList
         newList[position] = newList[position].copy(isSelected = true)
+        createdCategory = Category(0, binding.tvTitle.text.toString(), newList[position].res )
         iconAdapter.items = newList
     }
 
@@ -37,6 +64,15 @@ class AddCategoryFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
         }
         iconAdapter.items = getIcons()
+
+        binding.btnAddCategory.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                createdCategory?.let {
+                    Log.e("TAG",addCategoryUseCase.addCategory(it).toString())
+                }
+            }
+        }
+
     }
 
     override fun onDestroyView() {

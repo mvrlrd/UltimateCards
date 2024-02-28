@@ -1,6 +1,7 @@
 package ru.mvrlrd.featurecategory.presentation.recycler
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import ru.mvrlrd.core_api.dto.Category
 import ru.mvrlrd.featurecategory.databinding.ItemCategoryBinding
 
@@ -17,5 +18,6 @@ class CategoryViewHolder(
     fun bind(category: Category) {
         itemId = category.id
         binding.tvCategoryName.text = category.title
+        binding.ivCategoryImage.load(category.icon)
     }
 }

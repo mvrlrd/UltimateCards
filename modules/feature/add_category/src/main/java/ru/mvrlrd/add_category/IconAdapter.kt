@@ -9,7 +9,7 @@ import kotlin.properties.Delegates
 class IconAdapter(
     private val onClickCallback: ((Int) -> Unit)
 ) : RecyclerView.Adapter<IconViewHolder>() {
-    var items: List<IconItem> by Delegates.observable(emptyList()) { prop, old, new ->
+    var items: List<IconItem> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
     }
 

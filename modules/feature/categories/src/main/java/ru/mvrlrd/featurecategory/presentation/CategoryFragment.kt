@@ -63,6 +63,9 @@ class CategoryFragment : Fragment() {
         binding.fabAddCategory.setOnClickListener {
             addCategoryMediator.startAddCategoryFragment(_container!!.id,requireActivity().supportFragmentManager)
         }
+        categoryAdapter.onItemClickCallback = {
+            Log.e("TAG", it.toString())
+        }
 
         binding.recycler.apply {
             adapter = categoryAdapter

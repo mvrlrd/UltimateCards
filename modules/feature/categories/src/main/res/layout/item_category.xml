@@ -32,7 +32,6 @@
             android:id="@+id/iv_category_image"
             android:layout_width="@dimen/category_icon_size"
             android:layout_height="@dimen/category_icon_size"
-            android:src="@drawable/bag_svgrepo_com400"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
