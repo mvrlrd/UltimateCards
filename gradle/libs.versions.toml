@@ -29,6 +29,8 @@ lifecycle = "2.7.0"
 
 okhttp_ver="4.12.0"
 kotlinx_serialization_json_ver="1.5.1"
+coil_ver = "2.6.0"
+circleimageview ="3.1.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -63,10 +65,14 @@ jakewharton-kotlinx-serialization-converter ={group="com.jakewharton.retrofit",n
 okhttp={group="com.squareup.okhttp3",name="okhttp",version.ref="okhttp_ver"}
 kotlinx-serialization-json={group="org.jetbrains.kotlinx",name="kotlinx-serialization-json",version.ref="kotlinx_serialization_json_ver"}
 
+coil ={group="io.coil-kt", name="coil", version.ref="coil_ver"}
+
 
 androidx-constraintlayout={group="androidx.constraintlayout",name="constraintlayout",version.ref="constraint_layout"}
 androidx-lifecycle-livedata-ktx={group="androidx.lifecycle",name="lifecycle-livedata-ktx",version.ref="lifecycle"}
 androidx-lifecycle-viewmodel-ktx={group="androidx.lifecycle",name="lifecycle-viewmodel-ktx",version.ref="lifecycle"}
+de-hdodenhof-circleimageview = {group="de.hdodenhof", name="circleimageview",version.ref="circleimageview"}
+
 
 
 [plugins]

@@ -25,7 +25,7 @@ class DataBaseModule {
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    prepopulateDatabase(db)
+//                    prepopulateDatabase(db)
                 }
             })
             .build()
@@ -37,12 +37,12 @@ class DataBaseModule {
         return databaseContract.categoriesDao()
     }
 
-    private fun prepopulateDatabase(db: SupportSQLiteDatabase) {
-        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('1', 'movies')")
-        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('2', 'nature')")
-        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('3', 'sport')")
-        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('4', 'war')")
-        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('5', 'cars')")
-        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('6', 'work')")
-    }
+//    private fun prepopulateDatabase(db: SupportSQLiteDatabase) {
+////        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('1', 'movies')")
+////        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('2', 'nature')")
+////        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('3', 'sport')")
+////        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('4', 'war')")
+////        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('5', 'cars')")
+////        db.execSQL("INSERT INTO ${CategoryEntity.TABLE_NAME} VALUES ('6', 'work')")
+//    }
 }

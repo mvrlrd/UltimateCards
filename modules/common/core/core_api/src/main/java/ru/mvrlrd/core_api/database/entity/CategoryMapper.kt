@@ -1,7 +1,6 @@
-package ru.mvrlrd.featurecategory.data.model
+package ru.mvrlrd.core_api.database.entity
 
 
-import ru.mvrlrd.core_api.database.entity.CategoryEntity
 import ru.mvrlrd.core_api.dto.Category
 import javax.inject.Inject
 
@@ -10,7 +9,8 @@ class CategoryMapper@Inject constructor() {
         with(category){
             CategoryEntity(
                 id,
-                title
+                title,
+                icon
             )
         }
 
@@ -18,7 +18,8 @@ class CategoryMapper@Inject constructor() {
         with(entity){
             Category(
                 id,
-                title
+                title,
+                icon
             )
         }
 
