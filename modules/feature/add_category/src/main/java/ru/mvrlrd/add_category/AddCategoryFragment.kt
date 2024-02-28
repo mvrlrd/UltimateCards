@@ -38,7 +38,8 @@ class AddCategoryFragment : Fragment() {
 
 
     private var _binding: FragmentAddCategoryBinding? = null
-    private val binding: FragmentAddCategoryBinding get() = _binding?:throw RuntimeException("FragmentAddCategoryBinding is null")
+    private val binding: FragmentAddCategoryBinding
+        get() = _binding ?: throw RuntimeException("FragmentAddCategoryBinding is null")
 
     override fun onAttach(context: Context) {
         addCategoryComponent.inject(this)
@@ -64,25 +65,27 @@ class AddCategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvIcons.apply {
             adapter = iconAdapter
-            layoutManager = GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
+            layoutManager =
+                GridLayoutManager(requireContext(), 3, GridLayoutManager.VERTICAL, false)
         }
         iconAdapter.items = getIcons()
 
         binding.btnAddCategory.setOnClickListener {
             viewLifecycleOwner.lifecycleScope.launch {
-               if (binding.tvTitle.text.isNullOrBlank()){
-                   Toast.makeText(requireContext(),"Title mustn't be empty", Toast.LENGTH_SHORT).show()
-               }else{
-                   if (chosenIcon == null){
-                       Toast.makeText(requireContext(),"Choose icon", Toast.LENGTH_SHORT).show()
-                   }else{
-                       val title = binding.tvTitle.text.toString()
-                       val category = Category(0, title, chosenIcon!!)
-                       val insertedId = addCategoryUseCase.addCategory(category)
-                           Log.e("TAG","id #$insertedId has been inserted")
-                       requireActivity().supportFragmentManager.popBackStack()
-                   }
-               }
+                if (binding.tvTitle.text.isNullOrBlank()) {
+                    Toast.makeText(requireContext(), "Title mustn't be empty", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    if (chosenIcon == null) {
+                        Toast.makeText(requireContext(), "Choose icon", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val title = binding.tvTitle.text.toString()
+                        val category = Category(0, title, chosenIcon!!)
+                        val insertedId = addCategoryUseCase.addCategory(category)
+                        Log.e("TAG", "id #$insertedId has been inserted")
+                        requireActivity().supportFragmentManager.popBackStack()
+                    }
+                }
             }
         }
     }
@@ -92,43 +95,37 @@ class AddCategoryFragment : Fragment() {
         _binding = null
     }
 
-   private fun getIcons(): List<IconItem> {
+    private fun getIcons(): List<IconItem> {
         return listOf(
             IconItem(R.drawable.icon_01, false),
             IconItem(R.drawable.icon_02, false),
             IconItem(R.drawable.icon_03, false),
             IconItem(R.drawable.icon_04, false),
             IconItem(R.drawable.icon_05, false),
-
             IconItem(R.drawable.icon_06, false),
             IconItem(R.drawable.icon_07, false),
             IconItem(R.drawable.icon_08, false),
             IconItem(R.drawable.icon_09, false),
             IconItem(R.drawable.icon_10, false),
-
             IconItem(R.drawable.icon_11, false),
             IconItem(R.drawable.icon_12, false),
             IconItem(R.drawable.icon_13, false),
             IconItem(R.drawable.icon_14, false),
             IconItem(R.drawable.icon_15, false),
-
             IconItem(R.drawable.icon_16, false),
             IconItem(R.drawable.icon_17, false),
             IconItem(R.drawable.icon_18, false),
             IconItem(R.drawable.icon_19, false),
             IconItem(R.drawable.icon_20, false),
-
             IconItem(R.drawable.icon_21, false),
             IconItem(R.drawable.icon_22, false),
             IconItem(R.drawable.icon_23, false),
             IconItem(R.drawable.icon_24, false),
             IconItem(R.drawable.icon_25, false),
-
             IconItem(R.drawable.icon_26, false),
             IconItem(R.drawable.icon_27, false),
             IconItem(R.drawable.icon_28, false),
-
-        )
+            )
     }
 
     companion object {
